@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "636253752678",
+    "project_id": "lontarresearch-bac32",
+    "storage_bucket": "lontarresearch-bac32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636253752678:android:9d707c95a443ad4e1d8ca7",
+        "android_client_info": {
+          "package_name": "com.lontarlab.onigiridiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636253752678-fab60fi9leehtiobo5b9ff1rq47an9rg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lontarlab.onigiridiary",
+            "certificate_hash": "725ed31bed04dcda3c5f594f6852c3fb1e147d9b"
+          }
+        },
+        {
+          "client_id": "636253752678-ln3jpeud42pd05m8p8b54sag2fljq8n9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIK2OOmXtGD8BzTQHUFlPlDKtykUCK_UI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636253752678-ln3jpeud42pd05m8p8b54sag2fljq8n9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
