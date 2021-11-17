@@ -16,6 +16,22 @@ class WrapperScreen extends StatelessWidget {
       child: Consumer<WrapperProvider>(
         builder: (context, wrapperProvider, child) {
           return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.red[100],
+              title: Image.asset(
+                'assets/images/onigiri_diary_logo.png',
+                height: 50,
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.event,
+                    color: Colors.pink[200],
+                  ),
+                ),
+              ],
+            ),
             body: PageView(
               controller: wrapperProvider.pageController,
               onPageChanged: (index) {
@@ -36,30 +52,44 @@ class WrapperScreen extends StatelessWidget {
                 debugPrint(index.toString());
               },
               type: BottomNavigationBarType.fixed,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                  ),
                   label: 'Beranda',
+                  icon: const Icon(Icons.home),
+                  activeIcon: Icon(
+                    Icons.home,
+                    color: Colors.pink[200],
+                  ),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  label: 'Diary',
+                  icon: const Icon(
                     Icons.menu_book,
                   ),
-                  label: 'Diary',
+                  activeIcon: Icon(
+                    Icons.menu_book,
+                    color: Colors.pink[200],
+                  ),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  label: 'Kalender',
+                  icon: const Icon(
                     Icons.event,
                   ),
-                  label: 'Kalender',
+                  activeIcon: Icon(
+                    Icons.event,
+                    color: Colors.pink[200],
+                  ),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  label: 'Tips',
+                  icon: const Icon(
                     Icons.wb_sunny,
                   ),
-                  label: 'Tips',
+                  activeIcon: Icon(
+                    Icons.wb_sunny,
+                    color: Colors.pink[200],
+                  ),
                 ),
               ],
             ),
