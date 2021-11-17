@@ -90,7 +90,7 @@ class DiaryScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'Waktu',
+                          'Lokasi',
                           style: TextStyle(
                             color: Colors.purple[700],
                           ),
@@ -98,7 +98,7 @@ class DiaryScreen extends StatelessWidget {
                         const SizedBox(width: 16.0),
                         Expanded(
                           child: Text(
-                            ': 2020-12-03 14:26:59',
+                            ': Unknown',
                             style: TextStyle(
                               color: Colors.purple[800],
                             ),
