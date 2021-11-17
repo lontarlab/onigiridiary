@@ -153,6 +153,7 @@ class DiaryScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pink[200],
         child: const Icon(Icons.add),
         onPressed: () {},
       ),

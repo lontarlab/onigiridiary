@@ -40,8 +40,8 @@ class WrapperScreen extends StatelessWidget {
               children: const [
                 HomeScreen(),
                 DiaryScreen(),
-                CalenderScreen(),
                 TipsScreen(),
+                CalenderScreen(),
               ],
             ),
             bottomNavigationBar: BottomNavigationBar(
@@ -72,22 +72,22 @@ class WrapperScreen extends StatelessWidget {
                   ),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Kalender',
-                  icon: const Icon(
-                    Icons.event,
-                  ),
-                  activeIcon: Icon(
-                    Icons.event,
-                    color: Colors.pink[200],
-                  ),
-                ),
-                BottomNavigationBarItem(
                   label: 'Tips',
                   icon: const Icon(
                     Icons.wb_sunny,
                   ),
                   activeIcon: Icon(
                     Icons.wb_sunny,
+                    color: Colors.pink[200],
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Kalender',
+                  icon: const Icon(
+                    Icons.event,
+                  ),
+                  activeIcon: Icon(
+                    Icons.event,
                     color: Colors.pink[200],
                   ),
                 ),
