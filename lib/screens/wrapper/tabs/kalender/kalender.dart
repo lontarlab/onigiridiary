@@ -5,9 +5,19 @@ class CalenderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Kalender'),
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(
+              'assets/images/onigiri_diary_bg.png',
+            ),
+          ),
+        ),
+        child: const Center(
+          child: Text('Kalender'),
+        ),
       ),
     );
   }
