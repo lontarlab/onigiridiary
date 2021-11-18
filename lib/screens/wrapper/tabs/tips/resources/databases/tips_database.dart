@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onigiridiary/screens/wrapper/tabs/tips/resources/models/tips_model.dart';
 
-class DiaryDatabase {
+class TipsDatabase {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   String collectionPath = 'tips';
 
@@ -12,7 +12,6 @@ class DiaryDatabase {
   }
 
   Stream<QuerySnapshot<TipsModel>> streamDiary({
-    required String userDocId,
     String? status,
   }) {
     return firestore
