@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:onigiridiary/screens/wrapper/tabs/diary/diary_detail.dart';
+import 'package:onigiridiary/screens/wrapper/tabs/diary/diary_edit.dart';
 import 'package:onigiridiary/screens/wrapper/tabs/diary/diary_tambah.dart';
 import 'package:onigiridiary/screens/wrapper/tabs/diary/providers/diary_provider.dart';
 import 'package:onigiridiary/screens/wrapper/tabs/diary/resources/models/diary_model.dart';
@@ -165,7 +167,19 @@ class DiaryScreen extends StatelessWidget {
                 itemCount: listDiary.length,
                 itemBuilder: (_, index) {
                   DiaryModel diary = listDiary[index].data()!;
-                  return _buildListDiary(diary);
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => DetailDiaryScreen(diary),
+                        ),
+                      );
+                    },
+                    onLongPress: () {
+                      showModalAction(context, diary);
+                    },
+                    child: _buildListDiary(diary),
+                  );
                 },
               );
             },
@@ -184,6 +198,80 @@ class DiaryScreen extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  void showModalAction(BuildContext context, DiaryModel diary) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      context: context,
+      builder: (builder) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                diary.note!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    width: 1,
+                    color: Colors.pink[200]!,
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.of(context)
+                  ..pop()
+                  ..push(
+                    MaterialPageRoute(
+                      builder: (_) {
+                        return EditDiaryScreen(diary);
+                      },
+                    ),
+                  );
+              },
+              leading: const Icon(Icons.edit),
+              title: const Text(
+                "Edit Diary",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            ListTile(
+              onTap: () async {
+                Navigator.of(context).pop();
+                await DiaryDatabase().delete(diary.docId!);
+              },
+              leading: const Icon(Icons.delete),
+              title: const Text(
+                "Hapus Diary",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

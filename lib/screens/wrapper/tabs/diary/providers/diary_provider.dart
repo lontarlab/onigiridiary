@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:onigiridiary/screens/wrapper/tabs/diary/resources/models/diary_model.dart';
 
 class DiaryProvider with ChangeNotifier {
+  final DiaryModel? diary;
+
+  DiaryProvider({this.diary}) {
+    if (diary != null) {
+      feeling = diary!.feeling!;
+      noteController = TextEditingController(text: diary!.note!);
+    }
+  }
+
   List<String> get feelings => [
         'Senang',
         'Sedih',

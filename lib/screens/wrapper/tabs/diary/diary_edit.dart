@@ -4,17 +4,19 @@ import 'package:onigiridiary/screens/wrapper/tabs/diary/resources/databases/diar
 import 'package:onigiridiary/screens/wrapper/tabs/diary/resources/models/diary_model.dart';
 import 'package:provider/provider.dart';
 
-class AddDiaryScreen extends StatelessWidget {
-  const AddDiaryScreen({Key? key}) : super(key: key);
+class EditDiaryScreen extends StatelessWidget {
+  final DiaryModel diary;
+
+  const EditDiaryScreen(this.diary, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => DiaryProvider(),
+      create: (_) => DiaryProvider(diary: diary),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
-          title: const Text('Tambah Diary'),
+          title: const Text('Edit Diary'),
         ),
         body: ListView(
           padding: const EdgeInsets.all(16),
@@ -136,13 +138,15 @@ class AddDiaryScreen extends StatelessWidget {
                   onPressed: () async {
                     if (diaryProvider.feeling != null &&
                         diaryProvider.noteController.text.isNotEmpty) {
-                      await DiaryDatabase().create(
-                        DiaryModel(
+                      await DiaryDatabase().update(
+                        diary.docId!,
+                        data: DiaryModel(
                           feeling: diaryProvider.feeling,
                           note: diaryProvider.noteController.text,
                           datePost: DateTime.now(),
-                        ),
+                        ).toData(),
                       );
+                      Navigator.of(context).pop();
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -150,10 +154,9 @@ class AddDiaryScreen extends StatelessWidget {
                         ),
                       );
                     }
-                    Navigator.of(context).pop();
                   },
                   child: const Text(
-                    'Tambah',
+                    'Edit',
                   ),
                 );
               },
